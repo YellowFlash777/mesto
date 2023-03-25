@@ -1,0 +1,20 @@
+.popup__form-input {
+  border: none;
+  border-bottom: 1px solid #000;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 0 0 13px 0;
+  margin-bottom: 30px;
+  width: 382px;
+}
+
+.popup__form-input:last-of-type {
+  margin: 0;
+}
+
+@media screen and (max-width: 599px) {
+  .popup__form-input {
+  max-width: 238px;
+  }
+}
