@@ -3,11 +3,15 @@
   color: white;
   font-family: inherit;
   padding: 14px 124px 18px;
-  margin: 0 auto 37px;
+  margin: 45px auto 37px;
   width: 382px;
   border: 0;
   font-size: 18px;
   line-height: 1.22;
+}
+.popup__save-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 599px) {
