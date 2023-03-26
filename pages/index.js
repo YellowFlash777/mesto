@@ -9,11 +9,15 @@ let jobInput = formElement.querySelector('.popup__form-input_job');
 let namePopup = document.querySelector('.profile__title-name');
 let jobPopup = document.querySelector('.profile__text-job');
 
+function popUpHidden () {
+popupOpened.classList.remove('popup_opened');
+}
+popUpHidden()
+
 formElement.addEventListener('submit', (event) => {
     event.preventDefault();
     namePopup.textContent = nameInput.value;
     jobPopup.textContent = jobInput.value;
-
     popupOpened.classList.remove('popup_opened');
 });
 
