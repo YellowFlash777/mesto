@@ -8,6 +8,6 @@
 * css
 * JavaScript
 
-### Ссылка на GitHub Pages
+### Ссылка на GitHub Pages https://yellowflash777.github.io/mesto/
 
 
