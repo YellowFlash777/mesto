@@ -5,12 +5,13 @@
   background-image: url(../../../vendor/images/heart-icon-white.svg);
   background-position: center;
   background-repeat: no-repeat;
+  background-color: transparent;
   width: 22px;
   height: 19px;
   }
   .element__icon:hover {
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   .element__icon:active {

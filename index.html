@@ -10,8 +10,7 @@
 <body class="page">
 <div class="page__container">
 <header class="header">
-  <img src="./vendor/images/header-logo.png" alt="Логотип Место" class="header__logo">
-  <div class="header__horizontal-line"></div>
+  <img src="./vendor/images/header-logo.svg" alt="Логотип Место" class="header__logo">
 </header>
 <main class="content">
 <section class="profile">
@@ -20,11 +19,11 @@
     <div class="profile__wrapper">
       <div class="profile__wrap">
         <h1 class="profile__title profile__title-name">Жак-Ив Кусто</h1>
-        <button class="profile__edit-button"></button>
+        <button class="profile__edit-button" type="button"></button>
       </div>
     <p class="profile__text profile__text-job">Исследователь океана</p>
     </div>
-  <button class="profile__add-button"></button>
+  <button class="profile__add-button" type="button"></button>
 </div>
 </section>
 <section class="element">
@@ -32,43 +31,43 @@
     <div class="element__container">
       <img src="./vendor/images/element-1.jpg" alt="Северное сияние ночью" class="element__image">
       <div class="element__wrap">
-        <h3 class="element__title" >Северное сияние</h3>
-        <button class="element__icon element__icon_active"></button>
+        <p class="element__text" >Северное сияние</p>
+        <button class="element__icon" type="button"></button>
       </div>
     </div>
     <div class="element__container">
       <img src="./vendor/images/element-2.jpg" alt="Галактика" class="element__image">
       <div class="element__wrap">
-        <h3 class="element__title">Галактика</h3>
-        <button class="element__icon element__icon_active"></button>
+        <p class="element__text">Галактика</p>
+        <button class="element__icon" type="button"></button>
       </div>
     </div>
     <div class="element__container">
       <img src="./vendor/images/element-3.jpg" alt="Северное сияние днём в Норвегии" class="element__image">
       <div class="element__wrap">
-        <h3 class="element__title">Норвегия</h3>
-        <button class="element__icon element__icon_active"></button>
+        <p class="element__text">Норвегия</p>
+        <button class="element__icon" type="button"></button>
       </div>
     </div>
     <div class="element__container">
       <img src="./vendor/images/element-4.jpg" alt="Гора Эверест" class="element__image">
       <div class="element__wrap">
-        <h3 class="element__title">Гора Эверест</h3>
-        <button class="element__icon element__icon_active"></button>
+        <p class="element__text">Гора Эверест</p>
+        <button class="element__icon" type="button"></button>
       </div>
     </div>
     <div class="element__container">
       <img src="./vendor/images/element-5.jpg" alt="Восход у горы" class="element__image">
       <div class="element__wrap">
-        <h3 class="element__title">Восход у горы</h3>
-        <button class="element__icon element__icon_active"></button>
+        <p class="element__text">Восход у горы</p>
+        <button class="element__icon" type="button"></button>
       </div>
     </div>
     <div class="element__container">
       <img src="./vendor/images/element-6.jpg" alt="Поляна перед горой ночью" class="element__image">
       <div class="element__wrap">
-        <h3 class="element__title">Поляна</h3>
-        <button class="element__icon element__icon_active"></button>
+        <p class="element__text">Поляна</p>
+        <button class="element__icon" type="button"></button>
     </div>
     </div>
   </div>
@@ -80,15 +79,17 @@
   </p>
 </footer>
 </div>
-<section class="popup popup_opened">
-  <form action="" class="popup__form">
-    <h3 class="popup__edit-profile">Редактировать профиль</h3>
-    <input class="popup__form-input popup__form-input_name" type="text" value="Жак-Ив Кусто">
-    <input class="popup__form-input popup__form-input_job" type="text" value="Исследователь океана">
-    <button class="popup__close-button"></button>
+<div class="popup">
+  <div class="popup__container">
+    <button class="popup__close-button" type="button"></button>
+    <form action="#" class="popup__form" method="post">
+    <p class="popup__edit-profile">Редактировать профиль</p>
+    <input class="popup__form-input popup__form-input_type_name" type="text" placeholder="Жак-Ив Кусто" name="author">
+    <input class="popup__form-input popup__form-input_type_description" type="text" placeholder="Исследователь океана" name="description">
     <button class="popup__save-button" type="submit">Сохранить</button>
   </form>
-</section>
-<script src="./pages/index.js"></script>
+  </div>
+</div>
+<script src="./scripts/index.js"></script>
 </body>
 </html>
