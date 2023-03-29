@@ -1,17 +1,17 @@
 .profile__edit-button {
-    margin-right: 244px;
-    border: 1px solid #FFFFFF;
-    border-radius: 2px;
-    box-sizing: border-box;
-    padding: 7px;
-    background-image: url(../../../vendor/images/edit-button.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: black;
-    margin-top: 30px;
-    align-self: start;
-    width: 24px;
-    height: 24px;
+  margin-right: 244px;
+  border: 1px solid #FFFFFF;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 7px;
+  background-image: url(../../../vendor/images/edit-button.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+  margin-top: 30px;
+  align-self: start;
+  width: 24px;
+  height: 24px;
 }
 
 .profile__edit-button:hover {
