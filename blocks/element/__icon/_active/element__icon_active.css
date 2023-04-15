@@ -1,0 +1,4 @@
+.element__icon_active {
+  opacity: 1;
+  background-image: url(../../../../vendor/images/heart-icon-dark-active.svg);
+}

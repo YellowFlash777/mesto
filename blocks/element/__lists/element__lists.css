@@ -1,4 +1,4 @@
-/* .element__wrapper {
+.element__lists {
   margin: 0 auto;
   max-width: 880px;
   display: grid;
@@ -8,15 +8,16 @@
 }
 
 @media screen and (max-width: 899px) {
-  .element__wrapper {
+  .element__lists {
     max-width: 577px;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 599px) {
-  .element__wrapper {
+  .element__lists {
     max-width: 282px;
     grid-template-columns: repeat(1, 1fr);
   }
-} */
+}
+
