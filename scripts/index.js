@@ -9,9 +9,7 @@ const popupCloseButtons = document.querySelectorAll(".popup__close-button");
 const profileForm = popupProfile.querySelector(".popup__form");
 // Инпуты для 1-ого первого попапа
 const nameInput = popupProfile.querySelector(".popup__form-input_type_name");
-const jobInput = popupProfile.querySelector(
-  ".popup__form-input_type_description"
-);
+const jobInput = popupProfile.querySelector(".popup__form-input_type_description");
 const namePopup = document.querySelector(".profile__title-name");
 const jobPopup = document.querySelector(".profile__text-job");
 //
@@ -33,10 +31,12 @@ const popupImageText = popupImage.querySelector(".popup-image__caption");
 
 function openPopup(popups) {
   popups.classList.add("popup_opened");
+  document.addEventListener('keydown', closePopupWithEsc);
 }
 
 function closePopup(popups) {
   popups.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closePopupWithEsc);
 }
 
 function openProfilePopup() {
@@ -45,6 +45,37 @@ function openProfilePopup() {
   openPopup(popupProfile);
 }
 editButton.addEventListener("click", openProfilePopup);
+// Закрытие попап на Esc
+function closePopupWithEsc (evt) {
+  if (evt.key === 'Escape') {
+    const popupOpen = document.querySelector('.popup_opened');
+    closePopup(popupOpen);
+  };
+}
+function closePopupWithEsc (evt) {
+  if (evt.key === 'Escape') {
+    const popupOpen = document.querySelector('.popup_opened');
+    closePopup(popupOpen);
+  };
+}
+// Закрытие попапа на оверлей
+function closePopupWithOverlay(evt) {
+  if (evt.currentTarget === evt.target) {
+    closePopup(evt.target);
+  };
+}
+popups.forEach(function(item) {
+  item.addEventListener('click', closePopupWithOverlay);
+});
+
+
+popupCloseButtons.forEach(function (item) {
+  const popup = item.closest(".popup");
+  item.addEventListener("click", () => {
+    closePopup(popup);
+  });
+});
+
 
 profileForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -137,3 +168,5 @@ cardCreatePopup.addEventListener("submit", (evt) => {
   closePopup(cardPopup);
   evt.target.reset();
 });
+
+

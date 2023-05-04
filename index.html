@@ -10,12 +10,18 @@
   <body class="page">
     <div class="page__container">
       <header class="header">
-        <img src="./vendor/images/header-logo.svg" alt="Логотип Место" class="header__logo">
+        <img
+          src="./vendor/images/header-logo.svg"
+          alt="Логотип Место"
+          class="header__logo">
       </header>
       <main class="content">
         <section class="profile">
           <div class="profile__container">
-            <img src="./vendor/images/portrait-jacques-yves-cousteau.png" alt="Портрет исследователя океана Жак Ив Кусто" class="profile__image">
+            <img
+              src="./vendor/images/portrait-jacques-yves-cousteau.png"
+              alt="Портрет исследователя океана Жак Ив Кусто"
+              class="profile__image">
             <div class="profile__wrapper">
               <div class="profile__wrap">
                 <h1 class="profile__title profile__title-name">Жак-Ив Кусто</h1>
@@ -27,9 +33,7 @@
           </div>
         </section>
         <section class="element">
-          <div class="element__lists">
-
-          </div>
+          <div class="element__lists"></div>
         </section>
       </main>
       <footer class="footer">
@@ -39,10 +43,30 @@
     <div class="popup popup-profile">
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
-        <form action="#" class="popup__form" method="post">
+        <form action="#" class="popup__form" method="post" novalidate name="edit-profile">
           <h2 class="popup__edit-profile">Редактировать профиль</h2>
-          <input class="popup__form-input popup__form-input_type_name" type="text" placeholder="Имя" name="author">
-          <input class="popup__form-input popup__form-input_type_description" type="text" placeholder="О себе" name="description">
+          <label class="popup__form-field">
+          <input
+            class="popup__form-input popup__form-input_type_name"
+            type="text"
+            placeholder="Имя"
+            name="name"
+            required
+            minlength="2"
+            maxlength="40">
+            <span class="popup__error popup__error_type_name"></span>
+          </label>
+          <label class="popup__form-field">
+          <input
+            class="popup__form-input popup__form-input_type_description"
+            type="text"
+            placeholder="О себе"
+            name="description"
+            required
+            minlength="2"
+            maxlength="200">
+            <span class="popup__error popup__error_type_description"></span>
+          </label>
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
       </div>
@@ -61,31 +85,46 @@
     <div class="popup card-element-popup">
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
-        <form action="#" class="popup__form" method="post">
+        <form action="#" class="popup__form" method="post"  novalidate name="addcard">
           <h2 class="popup__edit-profile">Новое место</h2>
-          <input class="popup__form-input popup__form-input_type_title" type="text" placeholder="Название" name="title">
-          <input class="popup__form-input popup__form-input_type_url" type="url" placeholder="Ссылка на картинку" name="url">
+          <label class="popup__form-field">
+          <input
+            class="popup__form-input popup__form-input_type_title"
+            type="text"
+            placeholder="Название"
+            name="title"
+            minlength="2"
+            maxlength="30"
+            required>
+            <span class="popup__error popup__error_type_title"></span>
+          </label>
+          <label class="popup__form-field">
+          <input
+            class="popup__form-input popup__form-input_type_url"
+            type="url"
+            placeholder="Ссылка на картинку"
+            name="url"
+            required>
+            <span class="popup__error popup__error_type_url"></span>
+          </label>
           <button class="popup__save-button" type="submit">Создать</button>
         </form>
       </div>
     </div>
 
-
     <template id="template-cards">
-        <div class="element__wrapper">
-          <div class="element__container">
-            <button class="element__trash-icon" type="button"></button>
-            <img src="#" alt="#" class="element__image">
-            <div class="element__wrap">
-              <h2 class="element__text"></h2>
-              <button class="element__icon" type="button"></button>
-            </div>
+      <div class="element__wrapper">
+        <div class="element__container">
+          <button class="element__trash-icon" type="button"></button>
+          <img src="#" alt="#" class="element__image">
+          <div class="element__wrap">
+            <h2 class="element__text"></h2>
+            <button class="element__icon" type="button"></button>
           </div>
         </div>
+      </div>
     </template>
-
-
-
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
