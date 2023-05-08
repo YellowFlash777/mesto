@@ -7,7 +7,8 @@ const formValidationConfig = {
   errorClass: 'popup__error_active',
   invalidErrorClass: 'popup__error_invalid',
 };
-console.dir(formValidationConfig);
+
+
 enablevalidation(formValidationConfig)
 function enablevalidation(configuration) {
   const formList = Array.from(configuration.allforms);
@@ -34,18 +35,19 @@ function checkInputValidity(input, inputErrorClass, errorClass, invalidErrorClas
     showInputError(input, errorElement, errorClass, invalidErrorClass);
    }
   }
+
   function showInputError(input, errorElement, errorClass, invalidErrorClass) {
     input.classList.add(invalidErrorClass);
     errorElement.textContent = input.validationMessage;
-    errorElement.classList.add(invalidErrorClass);
+    errorElement.classList.add(invalidErrorClass, errorClass);
   }
 
   function hideInputError(input, errorElement, errorClass, invalidErrorClass) {
-    input.classList.remove(invalidErrorClass);
+    input.classList.remove(invalidErrorClass, errorClass);
     errorElement.textContent = '';
-    errorElement.classList.remove(invalidErrorClass);
+    errorElement.classList.remove(invalidErrorClass, errorClass);
   }
-
+// кнопка
   function toogleButton(inputList, button, inactiveButtonClass) {
     if (hasValidInput(inputList)) {
       enableButton(button, inactiveButtonClass);
@@ -53,24 +55,24 @@ function checkInputValidity(input, inputErrorClass, errorClass, invalidErrorClas
       disableButton(button, inactiveButtonClass);
   }
   }
+  // кнопка
   function hasValidInput(inputList) {
     return Array.from(inputList).every((input) => input.validity.valid)
   }
-
+// кнопка
   function enableButton(button, inactiveButtonClass) {
     button.classList.remove(inactiveButtonClass)
     button.disabled = false;
   }
-
+// кнопка
   function disableButton(button, inactiveButtonClass) {
     button.classList.add(inactiveButtonClass);
     button.disabled = true;
   }
-
-  function resetErrorForOpenForm(form) {
+// кнопка
+  function resetErrorBeforeOpenForm(form) {
     form.querySelectorAll(formValidationConfig.inputSelector).forEach((input) => {
       const errorElement = document.querySelector(`${formValidationConfig.inputErrorClass}${input.name}`)
-      console.log(errorElement);
       if (!input.validity.valid) {
       hideInputError(input, errorElement, formValidationConfig.invalidErrorClass, formValidationConfig.errorClass)
     }

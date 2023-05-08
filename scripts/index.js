@@ -27,31 +27,26 @@ const deleteButtonCard = cardPopup.querySelector(".popup__save-button");
 const popupImageCard = popupImage.querySelector(".popup-image__zoom");
 const popupImageText = popupImage.querySelector(".popup-image__caption");
 
-// Первый попап, 4ПР открытие закрытие карточки Кусто
+// Открытие Попапов
 
 function openPopup(popups) {
   popups.classList.add("popup_opened");
   document.addEventListener('keydown', closePopupWithEsc);
 }
-
+// Закрытие Попапов
 function closePopup(popups) {
   popups.classList.remove("popup_opened");
   document.removeEventListener('keydown', closePopupWithEsc);
 }
-
+// Попап открытия с формой имени и професии
 function openProfilePopup() {
+  resetErrorBeforeOpenForm(profileForm);
   nameInput.value = namePopup.textContent;
   jobInput.value = jobPopup.textContent;
   openPopup(popupProfile);
 }
 editButton.addEventListener("click", openProfilePopup);
-// Закрытие попап на Esc
-function closePopupWithEsc (evt) {
-  if (evt.key === 'Escape') {
-    const popupOpen = document.querySelector('.popup_opened');
-    closePopup(popupOpen);
-  };
-}
+// Закрытие Попапа на Esc
 function closePopupWithEsc (evt) {
   if (evt.key === 'Escape') {
     const popupOpen = document.querySelector('.popup_opened');
@@ -68,7 +63,7 @@ popups.forEach(function(item) {
   item.addEventListener('click', closePopupWithOverlay);
 });
 
-
+// Закрытие попапов на Крестик
 popupCloseButtons.forEach(function (item) {
   const popup = item.closest(".popup");
   item.addEventListener("click", () => {
@@ -76,7 +71,7 @@ popupCloseButtons.forEach(function (item) {
   });
 });
 
-
+// Слушатель открытия карточек добавлением картинок
 profileForm.addEventListener("submit", (event) => {
   event.preventDefault();
   namePopup.textContent = nameInput.value;
@@ -84,45 +79,12 @@ profileForm.addEventListener("submit", (event) => {
   closePopup(popupProfile);
 });
 
-popupCloseButtons.forEach(function (item) {
-  const popup = item.closest(".popup");
-  item.addEventListener("click", () => {
-    closePopup(popup);
-  });
-});
-//
+
 
 // Реализация 2-ого попапа с добавление карточек и удалением их
 const templateCards = document.querySelector("#template-cards").content;
 const cardElement = templateCards.querySelector(".element__wrapper");
-// Массив карточек
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
+// Работа с карточками
 function createCard(object) {
   const cardElement = templateCards
     .querySelector(".element__wrapper")
@@ -155,6 +117,10 @@ initialCards.forEach((element) => {
 });
 
 profileAddButton.addEventListener("click", () => {
+  const buttonFormForCard = formValidationConfig.inactiveButtonClass;
+  disableButton(deleteButtonCard, buttonFormForCard);
+  cardCreatePopup.reset();
+  resetErrorBeforeOpenForm(cardCreatePopup);
   openPopup(cardPopup);
 });
 
