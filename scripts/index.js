@@ -130,7 +130,6 @@ cardCreatePopup.addEventListener("submit", (evt) => {
     name: newCardTitle.value,
     link: newCardUrl.value,
   };
-  const card = new Card(initialCard, cardsTemplate, openImagePopup)
   addCard(elementLists, createNewCard(initialCard));
   closePopup(cardPopup);
   evt.target.reset();
