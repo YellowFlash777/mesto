@@ -57,7 +57,7 @@ export default class FormValidator {
     this._button.classList.add(this._inactiveButtonClass);
     this._button.disabled = true;
   }
-  //
+
   enablevalidation() {
     this._setEventListener();
   }
@@ -69,6 +69,5 @@ export default class FormValidator {
         }
       })
       this._disableButton();
-  // +
     }
 }
