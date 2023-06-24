@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body class="page">
     <div class="page__container">
       <header class="header">
         <img
-          src="./vendor/images/header-logo.svg"
+          src="<%=require('../images/header-logo.svg')%>"
           alt="Логотип Место"
           class="header__logo">
       </header>
@@ -19,7 +18,7 @@
         <section class="profile">
           <div class="profile__container">
             <img
-              src="./vendor/images/portrait-jacques-yves-cousteau.png"
+              src="<%=require('../images/portrait-jacques-yves-cousteau.png')%>"
               alt="Портрет исследователя океана Жак Ив Кусто"
               class="profile__image">
             <div class="profile__wrapper">
@@ -128,6 +127,5 @@
         </div>
       </div>
     </template>
-    <script type="module" src="./index.js"></script>
   </body>
 </html>

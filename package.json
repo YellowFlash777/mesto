@@ -1,0 +1,30 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "В данной работе реализована адаптивная верстка на самые распорстранненые устройства, на 3 позициях 1280px, 899px, 599px. В работе реализован Pop Up через JavaScript, при нажатии на карандашик он открывается, а по умолчанию он скрыт, также в Pop Up можно вписывать и менять текст Имени и его деятельности",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "dev": "webpack serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.8.1",
+    "cssnano": "^6.0.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "core-js": "^3.31.0"
+  }
+}
