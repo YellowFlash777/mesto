@@ -1,10 +1,10 @@
 import "../pages/index.css"
-import Card from '../scripts/components/Card.js';
-import FormValidator from '../scripts/components/FormValidator.js';
-import PopupWithImage from '../scripts/components/PopupWithImage.js';
-import Section from '../scripts/components/Section.js';
-import UserInfo from '../scripts/components/UserInfo.js';
-import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithForm from '../components/PopupWithForm.js';
 import {
   initialCards,
   popupProfileSelector,
@@ -20,7 +20,7 @@ import {
   cardCreatePopup,
   formValidationConfig
 }
- from '../scripts/utils/constants.js';
+ from '../utils/constants.js';
 
 const userPopup = new UserInfo(profileSelectorName, profileSelectorJob);
 const popupImag = new PopupWithImage(popupImageSelector);
@@ -35,8 +35,8 @@ const cardList = new Section({
 cardList.renderItems();
 
 // Форма профиля
-const popupProfiles  = new PopupWithForm(popupProfileSelector, () => {
-  userPopup.setUserInfo(popupProfiles._getInputValue())
+const popupProfiles  = new PopupWithForm(popupProfileSelector, (data) => {
+  userPopup.setUserInfo(data)
   popupProfiles.close();
 })
 
