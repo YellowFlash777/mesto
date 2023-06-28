@@ -1,10 +1,11 @@
 export default class Card {
-  constructor(object, cardsTemplate, openImagePopup) {
+  constructor(object, cardsTemplate, openImagePopup, openDeletPopup) {
     this._object = object;
     this._link = object.link;
     this._name = object.title;
     this._cardsTemplate = cardsTemplate;
     this._openImagePopup = openImagePopup;
+    this._openDeletPopup = openDeletPopup;
   }
 
   _getTemplateClone() {
@@ -15,12 +16,17 @@ export default class Card {
     this._likeIconEl.classList.toggle("element__icon_active");
   }
   _handDeleteTrashIcon = () => {
-    this._trashIconEl.closest(".element__wrapper").remove()
-
+    this._openDeletPopup(this);
   }
+
+  handleRemoveCard () {
+  this._trashIconEl.closest(".element__wrapper").remove()
+}
+
   _handZoomImage = () =>  {
     this._openImagePopup(this._object);
   }
+
   _setEventListeners() {
     this._likeIconEl.addEventListener('click', this._handlike);
     this._trashIconEl.addEventListener('click', this._handDeleteTrashIcon);

@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
   </head>
+  <link rel="stylesheet" href="./index.css">
   <body class="page">
     <div class="page__container">
       <header class="header">
         <img
-          src="<%=require('../images/header-logo.svg')%>"
+          src='../images/header-logo.svg'
           alt="Логотип Место"
           class="header__logo">
       </header>
       <main class="content">
         <section class="profile">
           <div class="profile__container">
+            <button class="profile__avatar-btn">
             <img
-              src="<%=require('../images/portrait-jacques-yves-cousteau.png')%>"
+              src='../images/portrait-jacques-yves-cousteau.png'
               alt="Портрет исследователя океана Жак Ив Кусто"
               class="profile__image">
+            </button>
             <div class="profile__wrapper">
               <div class="profile__wrap">
                 <h1 class="profile__title profile__title-name">Жак-Ив Кусто</h1>
@@ -115,6 +118,38 @@
       </div>
     </div>
 
+
+
+    <div class="popup popup-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button"></button>
+        <form action="#" class="popup__form" method="post"  novalidate name="avatarcard">
+          <h2 class="popup__edit-profile">Обновить аватар</h2>
+          <input
+            class="popup__form-input popup__form-input_type_url"
+            type="url"
+            placeholder="Ссылка на картинку"
+            name="avatar"
+            id="avatar"
+            required>
+            <span class="popup__error popup__error_type_avatar"></span>
+          </label>
+          <button class="popup__save-button" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup-delete">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button"></button>
+        <form action="#" class="popup__form" method="post"  novalidate name="deletecard">
+          <h2 class="popup__edit-profile">Вы уверены?</h2>
+          <button class="popup__save-button" type="submit">Да</button>
+        </form>
+      </div>
+    </div>
+
+
     <template id="template-cards">
       <div class="element__wrapper">
         <div class="element__container">
@@ -127,5 +162,6 @@
         </div>
       </div>
     </template>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>

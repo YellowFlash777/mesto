@@ -28,12 +28,16 @@
 const popupProfile = document.querySelector(".popup-profile");
 const popupImage = document.querySelector(".popup-image");
 const cardPopup = document.querySelector(".card-element-popup");
+const avatarPopup = document.querySelector('.popup-avatar')
 // Селекторы попапов
 const popupProfileSelector = ".popup-profile";
 const popupCardSelector = '.card-element-popup';
 const popupImageSelector = '.popup-image';
+const avatarSelectorPopup = '.popup-avatar';
+const deleteSelectorPopup = '.popup-delete';
 //
-
+const avatarForm = avatarPopup.querySelector('.popup__form')
+const profileAvatarBtn = document.querySelector('.profile__avatar-btn')
 const profileForm = popupProfile.querySelector(".popup__form");
 const profileSelectorName = '.profile__title-name';
 const profileSelectorJob = '.profile__text-job';
@@ -52,6 +56,11 @@ const formValidationConfig = {
 };
 
 export {
+  deleteSelectorPopup,
+  avatarPopup,
+  avatarSelectorPopup,
+  avatarForm,
+  profileAvatarBtn,
   initialCards,
   popupProfileSelector,
   popupCardSelector,
