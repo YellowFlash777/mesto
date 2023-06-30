@@ -11,7 +11,8 @@ getInitialCards() {
       headers: {
         authorization: this._authorization
       }
-    }).then(this._checkResponse)
+    })
+      .then(this._checkResponse)
   }
 
   getCards() {
@@ -19,6 +20,7 @@ getInitialCards() {
       headers: {
         authorization: this._authorization
       }
-    }).then(this._checkResponse)
+    })
+      .then(this._checkResponse)
   }
 }

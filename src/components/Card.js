@@ -1,5 +1,6 @@
 export default class Card {
   constructor(object, cardsTemplate, openImagePopup, openDeletPopup) {
+    console.log(object);
     this._object = object;
     this._link = object.link;
     this._name = object.title;

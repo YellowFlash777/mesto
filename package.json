@@ -1,5 +1,6 @@
 {
   "name": "mesto",
+  "homepage": "./",
   "version": "1.0.0",
   "description": "В данной работе реализована адаптивная верстка на самые распорстранненые устройства, на 3 позициях 1280px, 899px, 599px. В работе реализован Pop Up через JavaScript, при нажатии на карандашик он открывается, а по умолчанию он скрыт, также в Pop Up можно вписывать и менять текст Имени и его деятельности",
   "main": "index.js",
@@ -19,6 +20,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
     "cssnano": "^6.0.1",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss-loader": "^7.3.3",
@@ -27,7 +29,6 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "core-js": "^3.31.0",
-    "gh-pages": "^5.0.0"
+    "core-js": "^3.31.0"
   }
 }

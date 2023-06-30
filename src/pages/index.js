@@ -119,6 +119,7 @@ profileAvatarBtn.addEventListener('click', () => {
 
 Promise.all([api.getInitialCards(), api.getCards()])
   .then(([dataUser, dataCard]) => {
+    console.log(dataUser.id);
     dataCard.forEach(element => element.myid = dataUser._id);
     userPopup.setUserInfo({ name: dataUser.name, description: dataUser.about, avatar: dataUser.avatar });
     cardList.renderItems(dataCard)
