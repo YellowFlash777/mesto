@@ -6,6 +6,7 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupDeleteCard from '../components/PopupDeleteCard.js';
+import Api from '../components/Api.js';
 import {
   initialCards,
   popupProfileSelector,
@@ -14,6 +15,7 @@ import {
   profileForm,
   profileSelectorName,
   profileSelectorJob,
+  profileSelectorImage,
   profileAddButton,
   editButton,
   elementSelector,
@@ -23,11 +25,24 @@ import {
   avatarSelectorPopup,
   avatarForm,
   profileAvatarBtn,
-  deleteSelectorPopup
+  deleteSelectorPopup,
 }
  from '../utils/constants.js';
 
-const userPopup = new UserInfo(profileSelectorName, profileSelectorJob);
+
+ const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-69',
+  headers: {
+    authorization: '9257d7a9-df32-45bd-8002-d201ea4f4c47',
+    'Content-Type': 'application/json'
+  }
+});
+
+api.getCards()
+  .then(res => console.log(res));
+
+
+const userPopup = new UserInfo(profileSelectorName, profileSelectorJob, profileSelectorImage);
 const popupImag = new PopupWithImage(popupImageSelector);
 const popupDeleteCard = new PopupDeleteCard(deleteSelectorPopup, (item) => {
   item.handleRemoveCard();
@@ -45,7 +60,7 @@ const cardList = new Section({
     cardList.addItem(createNewCard(item));
   }
 }, elementSelector);
-cardList.renderItems();
+// cardList.renderItems();
 
 // Форма профиля
 const popupProfiles  = new PopupWithForm(popupProfileSelector, (object) => {
@@ -102,3 +117,9 @@ profileAvatarBtn.addEventListener('click', () => {
 })
 
 
+Promise.all([api.getInitialCards(), api.getCards()])
+  .then(([dataUser, dataCard]) => {
+    dataCard.forEach(element => element.myid = dataUser._id);
+    userPopup.setUserInfo({ name: dataUser.name, description: dataUser.about, avatar: dataUser.avatar });
+    cardList.renderItems(dataCard)
+  })

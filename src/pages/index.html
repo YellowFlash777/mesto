@@ -18,18 +18,19 @@
       <main class="content">
         <section class="profile">
           <div class="profile__container">
+
             <button class="profile__avatar-btn">
             <img
-              src='../images/portrait-jacques-yves-cousteau.png'
+              src='#'
               alt="Портрет исследователя океана Жак Ив Кусто"
               class="profile__image">
             </button>
             <div class="profile__wrapper">
               <div class="profile__wrap">
-                <h1 class="profile__title profile__title-name">Жак-Ив Кусто</h1>
+                <h1 class="profile__title profile__title-name"></h1>
                 <button class="profile__edit-button" type="button"></button>
               </div>
-              <p class="profile__text profile__text-job">Исследователь океана</p>
+              <p class="profile__text profile__text-job"></p>
             </div>
           </div>
           <button class="profile__add-button" type="button"></button>
@@ -124,7 +125,8 @@
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
         <form action="#" class="popup__form" method="post"  novalidate name="avatarcard">
-          <h2 class="popup__edit-profile">Обновить аватар</h2>
+          <h2 class="popup__edit-profile popup__edit-profile_avatar">Обновить аватар</h2>
+          <label class="popup__form-field popup__form-field_avatar">
           <input
             class="popup__form-input popup__form-input_type_url"
             type="url"
@@ -134,7 +136,7 @@
             required>
             <span class="popup__error popup__error_type_avatar"></span>
           </label>
-          <button class="popup__save-button" type="submit">Создать</button>
+          <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
       </div>
     </div>

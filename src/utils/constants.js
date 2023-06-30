@@ -41,6 +41,7 @@ const profileAvatarBtn = document.querySelector('.profile__avatar-btn')
 const profileForm = popupProfile.querySelector(".popup__form");
 const profileSelectorName = '.profile__title-name';
 const profileSelectorJob = '.profile__text-job';
+const profileSelectorImage = '.profile__image'
 const profileAddButton = document.querySelector(".profile__add-button");
 const editButton = document.querySelector(".profile__edit-button");
 const elementSelector = '.element__lists';
@@ -68,6 +69,7 @@ export {
   profileForm,
   profileSelectorName,
   profileSelectorJob,
+  profileSelectorImage,
   profileAddButton,
   editButton,
   elementSelector,
