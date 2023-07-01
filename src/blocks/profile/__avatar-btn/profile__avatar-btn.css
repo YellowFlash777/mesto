@@ -9,8 +9,6 @@
   overflow: hidden;
   object-fit: cover;
   transition: .2s;
-  border-radius: 50%;
-  border: none;
   width: 120px;
   height: 120px;
 }
