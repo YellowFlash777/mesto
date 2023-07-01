@@ -62,7 +62,6 @@ export {
   avatarSelectorPopup,
   avatarForm,
   profileAvatarBtn,
-  initialCards,
   popupProfileSelector,
   popupCardSelector,
   popupImageSelector,

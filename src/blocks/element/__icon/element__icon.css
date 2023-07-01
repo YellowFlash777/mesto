@@ -1,13 +1,11 @@
 .element__icon {
-  border: none;
-  transform: translateY(-10px);
-  margin: 32px 21px 0 0;
-  background-image: url(../../../images/heart-icon-white.png);
-  background-position: center;
+  align-self: start;
   background-repeat: no-repeat;
-  background-color: transparent;
-  width: 22px;
+  background-image: url(../../../images/heart-icon-white.png);
+  border: none;
   height: 19px;
+  margin-bottom: 3px;
+  width: 22px;
   }
   .element__icon:hover {
     cursor: pointer;
@@ -16,8 +14,4 @@
 
 
 
-  @media screen and (max-width: 599px) {
-    .element__icon {
-      transform: translateY(-5px);
-    }
-  }
+
