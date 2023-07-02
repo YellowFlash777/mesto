@@ -35,7 +35,7 @@ const api = new Api({
   },
 });
 
-const userPopup = new UserInfo(
+const userInfo = new UserInfo(
   profileSelectorName,
   profileSelectorJob,
   profileSelectorImage
@@ -47,8 +47,7 @@ const popupDeleteCard = new PopupDeleteCard(
   ({ card, cardId }) => {
     api
       .removeCard(cardId)
-      .then((res) => {
-        console.log(res);
+      .then(res => {
         card.handleRemoveCard();
         popupDeleteCard.close();
       })
@@ -65,22 +64,22 @@ function createNewCard(item) {
     popupImag.open,
     popupDeleteCard.open,
     (likeIconEl, cardId) => {
-      if (likeIconEl.classList.contains(".element__icon_active")) {
+      if (likeIconEl.classList.contains("element__icon_active")) {
         api
           .deleteLikeCard(cardId)
-          .then((res) => {
-            card._toogLike(res.likes);
+          .then(res => {
+            card.toogLike(res.likes);
           })
           .catch((error) =>
             console.error(
               `Упс..., произошла ошибка при удалении карточки ${error}`
             )
-          );
+          )
       } else {
         api
           .addLikeCard(cardId)
-          .then((res) => {
-            card._toogLike(res.likes);
+          .then(res => {
+            card.toogLike(res.likes);
           })
           .catch((error) =>
             console.error(
@@ -93,6 +92,33 @@ function createNewCard(item) {
   return card.createCard();
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const cardList = new Section((item) => {
   cardList.addItemAppend(createNewCard(item));
 }, elementSelector);
@@ -102,7 +128,7 @@ const popupProfiles = new PopupWithForm(popupProfileSelector, (data) => {
   api
     .setUserInfo(data)
     .then((res) => {
-      userPopup.setUserInfo({
+      userInfo.setUserInfo({
         name: res.name,
         description: res.about,
         avatar: res.avatar,
@@ -117,9 +143,9 @@ const popupProfiles = new PopupWithForm(popupProfileSelector, (data) => {
 
 // Форма карточки
 const popupCard = new PopupWithForm(popupCardSelector, (data) => {
-  Promise.all([api.getInitialCards(), api.addNewCard(data)])
-    .then(([dataUser, dataCard]) => {
-      dataCard.myid = dataUser._id;
+  api.addNewCard(data)
+    .then(dataCard => {
+      dataCard.myid = userInfo.getId();
       cardList.addItemPrepend(createNewCard(dataCard));
       popupCard.close();
     })
@@ -135,7 +161,7 @@ const popupAvatar = new PopupWithForm(avatarSelectorPopup, (data) => {
   api
     .setChangeAvatar(data)
     .then((res) => {
-      userPopup.setUserInfo({
+      userInfo.setUserInfo({
         name: res.name,
         description: res.about,
         avatar: res.avatar,
@@ -156,15 +182,13 @@ popupCard.setEventListeners();
 popupAvatar.setEventListeners();
 popupDeleteCard.setEventListeners();
 
-// конец ПР 8
 
-// Переменная для валидации попапа с именем и местом работы
 const validationForProfile = new FormValidator(
   formValidationConfig,
   profileForm
 );
 validationForProfile.enablevalidation();
-// Переменная для валидации попапа с созданием карточек
+
 const validationForCards = new FormValidator(
   formValidationConfig,
   cardCreatePopup
@@ -176,7 +200,7 @@ validationForAvatar.enablevalidation();
 
 function openProfilePopup() {
   validationForProfile.resetErrorBeforeOpenForm();
-  popupProfiles.setInputValue(userPopup.getUserInfo());
+  popupProfiles.setInputValue(userInfo.getUserInfo());
   popupProfiles.open();
 }
 editButton.addEventListener("click", openProfilePopup);
@@ -195,11 +219,12 @@ profileAvatarBtn.addEventListener("click", () => {
 Promise.all([api.getInitialCards(), api.getCards()])
   .then(([dataUser, dataCard]) => {
     dataCard.forEach((element) => (element.myid = dataUser._id));
-    userPopup.setUserInfo({
+    userInfo.setUserInfo({
       name: dataUser.name,
       description: dataUser.about,
       avatar: dataUser.avatar,
     });
+    userInfo.setId(dataUser._id)
     cardList.renderedItems(dataCard);
   })
   .catch((error) =>

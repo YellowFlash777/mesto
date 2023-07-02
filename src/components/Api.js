@@ -87,3 +87,12 @@ getInitialCards() {
       .then(this._checkResponse)
   }
 }
+
+
+
+
+
+
+
+
+

@@ -17,13 +17,13 @@ export default class Card {
     this._cardsTemplate = cardsTemplate;
     this._openImagePopup = openImagePopup;
     this._openDeletPopup = openDeletPopup;
+    this._likeSwitch = likeSwitch;
     this._cloneEl = this._getTemplateClone();
     this._imageEl = this._cloneEl.querySelector(".element__image");
     this._trashIconEl = this._cloneEl.querySelector(".element__trash-icon");
     this._subtitle = this._cloneEl.querySelector(".element__text");
     this._likeIconEl = this._cloneEl.querySelector(".element__icon");
     this._counter = this._cloneEl.querySelector(".element__like-counter");
-    this._likeSwitch = likeSwitch;
   }
 
   _getTemplateClone() {
@@ -36,7 +36,7 @@ export default class Card {
 
   _handlikebtn = () => {
     this._likeSwitch(this._likeIconEl, this._cardId);
-  };
+   };
 
   _handDeleteTrashIcon = () => {
     this._openDeletPopup({ card: this, cardId: this._cardId });
@@ -58,8 +58,8 @@ export default class Card {
   }
 
   _checkLikesQuantity() {
-    this._likes.forEach((item) => {
-      if (item._id === this._myId) {
+    this._likes.forEach(item => {
+      if (item._id !== this._myId) {
         this._likeIconEl.classList.add("element__icon_active");
         return;
       }
@@ -67,7 +67,9 @@ export default class Card {
     this._counter.textContent = this._likesLength;
   }
 
-  _toogLike = (likes) => {
+
+
+  toogLike(likes) {
     this._likeIconEl.classList.toggle("element__icon_active");
     this._counter.textContent = likes.length;
   };
@@ -81,11 +83,15 @@ export default class Card {
   createCard() {
     this._imageEl.src = this._link;
     this._imageEl.alt = this._name;
-    this._checkMineTrashButtonIcon();
+    this._subtitle.textContent = this._name;
     this._checkLikesQuantity();
-    this._subtitle.textContent = this._name;
-    this._subtitle.textContent = this._name;
+    this._checkMineTrashButtonIcon();
     this._setEventListeners();
     return this._cloneEl;
   }
 }
+
+
+
+
+
