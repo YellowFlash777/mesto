@@ -57,9 +57,10 @@ const popupDeleteCard = new PopupDeleteCard(
   }
 );
 
-function createNewCard(item) {
+function createNewCard(item, myid) {
   const card = new Card(
     item,
+    myid,
     cardsTemplate,
     popupImag.open,
     popupDeleteCard.open,
@@ -92,35 +93,8 @@ function createNewCard(item) {
   return card.createCard();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const cardList = new Section((item) => {
-  cardList.addItemAppend(createNewCard(item));
+const cardList = new Section((item, myid) => {
+  cardList.addItemAppend(createNewCard(item, myid));
 }, elementSelector);
 
 // Форма профиля
@@ -145,8 +119,7 @@ const popupProfiles = new PopupWithForm(popupProfileSelector, (data) => {
 const popupCard = new PopupWithForm(popupCardSelector, (data) => {
   api.addNewCard(data)
     .then(dataCard => {
-      dataCard.myid = userInfo.getId();
-      cardList.addItemPrepend(createNewCard(dataCard));
+      cardList.addItemPrepend(createNewCard(dataCard, userInfo.getId()));
       popupCard.close();
     })
     .catch((error) =>
@@ -198,6 +171,7 @@ validationForCards.enablevalidation();
 const validationForAvatar = new FormValidator(formValidationConfig, avatarForm);
 validationForAvatar.enablevalidation();
 
+
 function openProfilePopup() {
   validationForProfile.resetErrorBeforeOpenForm();
   popupProfiles.setInputValue(userInfo.getUserInfo());
@@ -213,19 +187,19 @@ profileAddButton.addEventListener("click", () => {
 
 profileAvatarBtn.addEventListener("click", () => {
   validationForCards.resetErrorBeforeOpenForm();
+  validationForAvatar.resetErrorBeforeOpenForm();
   popupAvatar.open();
 });
 
 Promise.all([api.getInitialCards(), api.getCards()])
   .then(([dataUser, dataCard]) => {
-    dataCard.forEach((element) => (element.myid = dataUser._id));
     userInfo.setUserInfo({
       name: dataUser.name,
       description: dataUser.about,
       avatar: dataUser.avatar,
     });
     userInfo.setId(dataUser._id)
-    cardList.renderedItems(dataCard);
+    cardList.renderedItems(dataCard, userInfo.getId());
   })
   .catch((error) =>
     console.error(
