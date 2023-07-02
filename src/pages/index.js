@@ -57,10 +57,10 @@ const popupDeleteCard = new PopupDeleteCard(
   }
 );
 
-function createNewCard(item, myid) {
+function createNewCard(item) {
   const card = new Card(
     item,
-    myid,
+    userInfo.getId(),
     cardsTemplate,
     popupImag.open,
     popupDeleteCard.open,
@@ -93,8 +93,8 @@ function createNewCard(item, myid) {
   return card.createCard();
 }
 
-const cardList = new Section((item, myid) => {
-  cardList.addItemAppend(createNewCard(item, myid));
+const cardList = new Section((item) => {
+  cardList.addItemAppend(createNewCard(item));
 }, elementSelector);
 
 // Форма профиля
@@ -119,7 +119,7 @@ const popupProfiles = new PopupWithForm(popupProfileSelector, (data) => {
 const popupCard = new PopupWithForm(popupCardSelector, (data) => {
   api.addNewCard(data)
     .then(dataCard => {
-      cardList.addItemPrepend(createNewCard(dataCard, userInfo.getId()));
+      cardList.addItemPrepend(createNewCard(dataCard));
       popupCard.close();
     })
     .catch((error) =>
@@ -199,7 +199,7 @@ Promise.all([api.getInitialCards(), api.getCards()])
       avatar: dataUser.avatar,
     });
     userInfo.setId(dataUser._id)
-    cardList.renderedItems(dataCard, userInfo.getId());
+    cardList.renderedItems(dataCard);
   })
   .catch((error) =>
     console.error(
